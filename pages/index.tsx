@@ -3,6 +3,8 @@ import Link from "next/link";
 import { supabase } from "../services/supabase";
 
 const Home: NextPage = ({ lessons }: any) => {
+  console.log(supabase.auth.user());
+
   return (
     <div className="w-full max-w-3xl mx-auto my-16 px-2">
       {lessons.map((lesson: any) => (
