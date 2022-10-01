@@ -2,6 +2,10 @@ import Stripe from "stripe";
 import { supabase } from "../../services/supabase";
 
 const handler = async (req: any, res: any) => {
+  if (req.query.API_ROUTE_SECRET !== process.env.API_ROUTE_SECRET) {
+    return res.status(401).send("Not authorized");
+  }
+
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: "2022-08-01",
   });
