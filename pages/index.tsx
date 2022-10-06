@@ -1,9 +1,12 @@
 import type { NextPage } from "next";
 import Link from "next/link";
+import { useUser } from "../context/users";
 import { supabase } from "../services/supabase";
 
 const Home: NextPage = ({ lessons }: any) => {
-  console.log(supabase.auth.user());
+  const { user } = useUser();
+
+  console.log({ user });
 
   return (
     <div className="w-full max-w-3xl mx-auto my-16 px-2">

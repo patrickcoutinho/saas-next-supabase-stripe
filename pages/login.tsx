@@ -1,10 +1,12 @@
 import { NextPage } from "next";
 import { useEffect } from "react";
-import { supabase } from "../services/supabase";
+import { useUser } from "../context/users";
 
 const Login: NextPage = () => {
+  const { login } = useUser();
+
   useEffect(() => {
-    supabase.auth.signIn({ provider: "github" });
+    login();
   }, []);
 
   return <></>;
